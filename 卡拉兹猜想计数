@@ -1,0 +1,22 @@
+//卡拉兹猜想计数
+#include<stdio.h>
+int main()
+{
+	int input=3;
+	int count=0;
+	scanf("%d",&input);
+	while(input==1)
+	{
+		if(input%2==0)
+		{
+			input=input/2;
+			count++;
+		}
+		else
+		{
+			input=(input*3+1)/2;
+			count++;
+		}
+	}
+	printf("%d",input);
+}
