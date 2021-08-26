@@ -1,15 +1,15 @@
-//1002写出这个数
+#define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
 #include<string.h>
 void py(int x)		//有没有更有效率的方法？
 {
-	switch(x)
+	switch (x)
 	{
 	case 0:
 		printf("ling");
 		break;
 	case 1:
-		printf("yi"); 
+		printf("yi");
 		break;
 	case 2:
 		printf("er");
@@ -39,19 +39,22 @@ void py(int x)		//有没有更有效率的方法？
 }
 void print(int sum)
 {
-	if(sum>9)
-		print(sum/10);
+	if (sum > 9)
+		print(sum / 10);
+	if(sum>9)			//保证开头第一个空格不会被打出来
 		printf(" ");
-	py(sum%10);		//递归的方式保证最后一数字后面无空格
+	py(sum % 10);		//递归的方式保证最后一数字后面无空格
+
 }
 int main()
 {
-	int i=0;
-	int sum=0;
-	char arr[101]={'1','2','3','4','5','6','7'};//为了放下100位的数字，不能用int，否则内存会溢出
-	for(i=0;i<strlen(arr);i++)
+	int i = 0;
+	int sum = 0;
+	char arr[101];//为了放下100位的数字，不能用int，否则内存会溢出
+	scanf("%s",&arr);
+	for (i = 0; i < strlen(arr); i++)
 	{
-		sum=sum+arr[i]-'0';
+		sum = sum + arr[i] - '0';
 	}
 	print(sum);
 	return 0;
