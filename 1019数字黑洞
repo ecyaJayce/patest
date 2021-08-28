@@ -1,0 +1,66 @@
+/*给定任一个各位数字不完全相同的 4 位正整数，如果我们先把4 个数
+字按非递增排序，再按非递减排序，然后用第 1 个数字减第 2 个数字，
+将得到一个新的数字。一直重复这样做，我们很快会停在有“数字黑洞”之
+称的 6174，这个神奇的数字也叫 Kaprekar 常数。*/
+
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+int Sort_min(int num)
+{
+	int i = 0;
+	int arr[4] = { 0 };
+	for (i = 0; i < 4; i++)
+	{
+		arr[i] = num % 10;
+		num = num / 10;
+	}
+	for (i = 0; i < 4; i++)		
+	{
+		int flag = 1;
+		int j = 0;
+		for (j = 0; j < 3 - i; j++)
+			if (arr[j] > arr[j + 1])
+			{
+				int tmp = arr[j];
+				arr[j] = arr[j + 1];
+				arr[j + 1] = tmp;
+				flag = 0;
+			}
+			else
+			{
+				continue;
+			}
+		if (flag == 1)  
+		{
+			break;
+		}
+	}
+	return arr[0] * 1000 + arr[1] * 100 + arr[2] * 10 + arr[3];
+}
+int Reverse(int num)
+{
+	return num % 10 * 1000 + num / 10 % 10 * 100 + num / 100 % 10 * 10 + num / 1000 % 10 ;
+}
+int main()
+{
+	int num1, num2, num3;
+	scanf("%d", &num1);
+	if (num1 % 1111 != 0)
+	{
+		while (1)
+		{
+			num1 = Sort_min(num1);
+			num2 = Reverse(num1);
+			num3 = num2 - num1;
+			printf("%04d - %04d = %04d\n", num2, num1, num3);
+			num1 = num3;
+			if (num1 == 6174)
+				break;
+		}
+	}
+	else
+	{
+		printf("%04d - %04d = %04d\n", num1, num1, 0000);
+	}
+	return 0;
+}
