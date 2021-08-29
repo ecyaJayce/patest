@@ -1,0 +1,63 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+#include<string.h>
+void Quo(char* num, int* y,char* arr)
+{
+	int i = 0;
+	int lenth = strlen(num);
+	int rem = 0;
+	rem = (num[i]-'0') % (*y);
+	int quo = 0;
+	quo=(num[i] - '0') / (*y);
+	if (quo + '0' == '0')
+	{	
+		if (lenth == 1)
+		{
+			arr[0] = '0';
+		}
+		else
+		{
+			arr--;
+			for (i = 1; i < lenth; i++)
+			{
+				quo = (rem * 10 + (num[i] - '0')) / (*y);
+				rem = (rem * 10 + (num[i] - '0')) % (*y);
+				arr++;
+				*arr = '0' + quo;
+			}
+		}
+	}
+	else
+	{
+		*arr = quo + '0';
+		for (i = 1; i < lenth; i++)
+		{
+			quo = (rem * 10 + (num[i] - '0')) / (*y);
+			rem = (rem * 10 + (num[i] - '0')) % (*y);
+			arr++;
+			*arr = '0' + quo;
+		}
+	}
+}
+int Rem(char* num, int* y)
+{
+	int i = 0;
+	int lenth = strlen(num);
+	int rem = 0;
+	rem = (num[i] - '0') % (*y);
+	for (i = 1; i < lenth; i++)
+	{
+		rem = (rem * 10 + (num[i] - '0')) % (*y);
+	}
+	return rem;
+}
+int main()
+{
+	char arr[1001] = {};
+	char num[1001] = {};
+	int b;
+	scanf("%s %d", num, &b);
+	Quo(num, &b, arr);
+	printf("%s %d", arr,Rem(num,&b) );
+	return 0;
+}
