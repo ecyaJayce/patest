@@ -1,0 +1,21 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+int main()
+{
+	int num = 0;
+	int B, S, G;
+	int i = 0;
+	scanf("%d", &num); getchar();
+	G = num % 10;
+	num = num / 10;
+	S = num % 10;
+	num = num / 10;
+	B = num % 10;
+	for (i = 0; i < B; i++)
+		printf("B");
+	for (i = 0; i < S; i++)
+		printf("S");
+	for (i = 0; i < G; i++)
+		printf("%d",i+1);
+	return 0;
+}
