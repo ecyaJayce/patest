@@ -1,0 +1,30 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include<stdlib.h>
+typedef struct student
+{
+	char name[11];
+	char num[11];
+	int score;
+}stu;
+int cmp_int(const void* e1,const void* e2)
+{
+	return ((stu*)e1)->score - ((stu*)e2)->score;
+}
+int main()
+{
+	int n = 0;
+	int i = 0;
+	scanf("%d", &n);
+	getchar();
+	stu arr[101] = {};
+	for (i = 0; i < n; i++) 
+	{
+		scanf("%s %s %d",&(arr[i].name), &(arr[i].num), &(arr[i].score));
+		getchar();
+	}
+	qsort(arr, n, sizeof(arr[0]), cmp_int);
+	printf("%s %s\n", arr[n-1].name, arr[n-1].num);
+	printf("%s %s\n", arr[0].name, arr[0].num);
+	return 0;
+}
