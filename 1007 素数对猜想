@@ -1,0 +1,55 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+#include<math.h>
+int Pri_num(int x, int* pri_num)//20
+{
+	int n = 2;
+	int i = 0;
+	for (i = 5; i <= x; i += 2)
+	{
+		int j = 0;
+		for (j = 3; j <= sqrt(i); j += 2)
+		{
+			if (i % j == 0)
+				break;
+		}
+		if (j > sqrt(i))
+		{
+			pri_num[n] = i;
+			n++;
+		}
+	}
+	return n;
+}
+int pair_pri_num(int* pri_num,int sz)
+{
+	int count = 0;
+	int i = 0;
+	for (i = 0; i < sz-1; i++)
+	{
+		if ((pri_num[i + 1] - pri_num[i])==2)
+			count++;
+	}
+	return count;
+}
+int main()
+{
+	int input = 0;
+	int pri_num[10000] = {};
+	scanf("%d",&input);
+	switch (input)
+	{
+	case1:
+		break;
+	case2:
+		pri_num[0] = 2;
+		break;
+	default:
+		pri_num[0] = 2;
+		pri_num[1] = 3;
+		break;
+	}
+	int sz=Pri_num(input,pri_num);
+	printf("%d",pair_pri_num(pri_num, sz));
+	return 0;
+}
