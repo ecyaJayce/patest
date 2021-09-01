@@ -1,0 +1,64 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+	int i = 0;
+	int day = 0;
+	int hour = 0;
+	int minu = 0;
+	char s1[61] = {};
+	char s2[61] = {};
+	char s3[61] = {};
+	char s4[61] = {};
+	char zhou[][4] = { "MON","TUE","WED","THU","FRI","SAT","SUN" };
+	scanf("%s %s %s %s", s1, s2, s3, s4);
+	while (1)
+	{
+		if (s1[i] >= 'A' && s1[i] <= 'G')
+		{
+			if (s1[i] == s2[i])
+			{
+				day = s1[i] - 'A';
+				break;
+			}
+		}
+		i++;
+	}
+	i++;
+	while (2)
+	{
+		if (s1[i] >= 'A' && s1[i] <= 'N')
+		{
+			if (s1[i] == s2[i])
+			{
+				hour = s1[i] - 'A' + 10;
+				break;
+			}
+		}
+		else if (s1[i] >= '0' && s1[i] <= '9')
+		{
+			if (s1[i] == s2[i])
+			{
+				hour = s1[i] - '0';
+				break;
+			}
+		}
+		i++;
+	}
+	i = 0;
+	while (3)
+	{
+		if ((s3[i] >= 'A' && s3[i] <= 'Z') || (s3[i] >= 'a' && s3[i] <= 'z'))
+		{
+			if (s3[i] == s4[i])
+			{
+				minu = i;
+				break;
+			}
+		}
+		i++;
+	}
+	printf("%s %02d:%02d\n", zhou[day], hour, minu);
+	return 0;
+}
