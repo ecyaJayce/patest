@@ -1,0 +1,19 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+int main()
+{
+	int i = 0;
+	long int A, B;
+	long long int C;
+	int input = 0;
+	scanf("%d", &input);
+	for (i = 0; i < input; i++)
+	{
+		scanf("%ld%ld%lld", &A,&B,&C);
+		if (A + B > C)
+			printf("Case #%d: true\n",i+1);
+		else
+			printf("Case #%d: false\n", i+1);
+	}
+	return 0;
+}
