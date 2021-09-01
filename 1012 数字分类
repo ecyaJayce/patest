@@ -1,0 +1,59 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+int main()
+{
+	int tmp;
+	int A[7] = {};
+	int flag = 1;
+	int count = 0;
+	scanf("%d", &count);
+	while (count--)
+	{
+		scanf("%d", &tmp);
+		switch (tmp % 5)
+		{
+		case 0:
+			if (tmp % 2 == 0)
+			{
+				A[0] = A[0] + tmp;
+			}
+			break;
+		case 1:
+			A[1] = A[1] + tmp * (flag);
+			flag *= (-1);
+			A[5]++;
+			break;
+		case 2:
+			A[2]++;
+			break;
+		case 3:
+			A[3] = A[3] + tmp;
+			A[6]++;
+			break;
+		case 4:
+			if (tmp > A[4])
+				A[4] = tmp;
+			break;
+		}
+	}
+	if (A[0] > 0)
+		printf("%d ", A[0]);
+	else
+		printf("N ");
+	if (A[5] > 0)
+		printf("%d ", A[1]);
+	else
+		printf("N ");
+	if (A[2] > 0)
+		printf("%d ", A[2]);
+	else
+		printf("N ");
+	if (A[3] > 0)
+		printf("%.1f ", ((double) A[3])/A[6]);
+	else
+		printf("N ");
+	if (A[4] > 0)
+		printf("%d", A[4]);
+	else
+		printf("N");
+}
