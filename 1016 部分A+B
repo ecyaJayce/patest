@@ -1,0 +1,33 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+	int i = 0;
+	int sum = 0;
+	int DA = 0;
+	int DB = 0;
+	int countA = 1;
+	int countB = 1;
+	char A[11] = {};
+	char B[11] = {};
+	scanf("%s %d %s %d",A,&DA,B,&DB);
+	for (i = 0; i <= strlen(A); i++)
+	{
+		if (A[i] == DA+48)
+		{
+			sum = DA * countA + sum;
+			countA *= 10;
+		}
+	}
+	for (i = 0; i <=strlen(A); i++)
+	{
+		if (B[i] == DB+48)
+		{
+			sum = DB * countB + sum;
+			countB *= 10;
+		}
+	}
+	printf("%d", sum);
+	return 0;
+}
